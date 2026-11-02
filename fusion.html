@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fusion Foot – BMZ GAMES</title>
+  <meta name="description" content="Fusion Foot : fais fusionner les têtes de joueurs identiques jusqu'à Messi. Gratuit, dans ton navigateur.">
+  <meta name="theme-color" content="#1b1450">
+  <meta property="og:title" content="Fusion Foot – BMZ GAMES">
+  <meta property="og:description" content="Fais fusionner les têtes de joueurs identiques jusqu'à Messi !">
+  <meta property="og:image" content="images/messi.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Moteur de physique (internet nécessaire), puis notre jeu -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js" defer></script>
+  <script src="fusion.js" defer></script>
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="entete">
+    <div class="conteneur entete-interieur">
+      <a class="logo" href="index.html"><span class="logo-bloc">BMZ</span> GAMES</a>
+      <nav aria-label="Navigation principale">
+        <ul class="menu">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#reflexion">Réflexion</a></li>
+          <li><a href="index.html#rapidite">Rapidité</a></li>
+          <li><a href="index.html#hasard">Hasard</a></li>
+          <li><a href="index.html#apropos">À propos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="section page-jeu">
+      <div class="conteneur">
+        <h1 class="titre-jeu">Fusion Foot</h1>
+        <p class="intro">
+          Fais tomber les têtes. Deux têtes identiques fusionnent en une plus grosse.
+          Atteins Messi sans dépasser la ligne rouge !
+        </p>
+
+        <p id="erreur" class="erreur" role="alert" hidden>
+          Le jeu n'a pas pu démarrer : le moteur de physique ne s'est pas chargé.
+          Vérifie ta connexion internet puis recharge la page.
+        </p>
+
+        <div class="jeu-zone">
+          <canvas id="jeu" aria-label="Plateau du jeu Fusion Foot"></canvas>
+
+          <aside class="jeu-cote">
+            <div class="tableaux">
+              <div class="tableau"><p class="etiquette">Score</p><p class="gros" id="score" aria-live="polite">0</p></div>
+              <div class="tableau"><p class="etiquette">Record</p><p class="gros" id="record">0</p></div>
+              <div class="tableau"><p class="etiquette">Suivant</p><img id="suivant" width="56" height="56" alt=""></div>
+            </div>
+
+            <div class="boutons-jeu">
+              <button id="btn-rejouer" class="bouton bouton-jaune" type="button">Rejouer</button>
+              <button id="btn-pause" class="bouton bouton-blanc" type="button" aria-pressed="false">Pause</button>
+              <button id="btn-son" class="bouton bouton-blanc" type="button" aria-pressed="true">Son : oui</button>
+            </div>
+
+            <h2 class="petit-titre">Évolution</h2>
+            <ol id="evolution" class="evolution" aria-label="Ordre des têtes, de la plus petite à la plus grosse"></ol>
+
+            <p class="aide">
+              Souris : déplace puis clique. Clavier : flèches et espace, P pour la pause.
+              Écran tactile : glisse puis lève le doigt.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <div class="conteneur">
+      <p>© 2026 BMZ GAMES. Fait à Avignon.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morpion – BMZ GAMES</title>
+  <meta name="description" content="Morpion : joue seul contre l'IA ou à deux, avec le visage de ton joueur préféré à la place de la croix et du rond.">
+  <meta name="theme-color" content="#1b1450">
+  <meta property="og:title" content="Morpion – BMZ GAMES">
+  <meta property="og:description" content="Aligne trois visages avant ton adversaire, seul contre l'IA ou à deux.">
+  <meta property="og:image" content="images/messi.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="morpion.js" defer></script>
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="entete">
+    <div class="conteneur entete-interieur">
+      <a class="logo" href="index.html"><span class="logo-bloc">BMZ</span> GAMES</a>
+      <nav aria-label="Navigation principale">
+        <ul class="menu">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#reflexion">Réflexion</a></li>
+          <li><a href="index.html#rapidite">Rapidité</a></li>
+          <li><a href="index.html#hasard">Hasard</a></li>
+          <li><a href="index.html#apropos">À propos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="section page-jeu page-morpion">
+      <div class="conteneur">
+        <h1 class="titre-jeu">Morpion</h1>
+        <p class="intro">Aligne trois visages avant ton adversaire : en ligne, en colonne ou en diagonale.</p>
+
+        <noscript><p class="erreur">Ce jeu a besoin de JavaScript pour fonctionner.</p></noscript>
+
+        <!-- ÉTAPE 1 : le mode de jeu -->
+        <div id="etape-mode" class="etape">
+          <h2 class="titre-etape" tabindex="-1" data-titre>Comment veux-tu jouer ?</h2>
+          <div class="choix-mode">
+            <button class="carte-mode" type="button" data-mode="solo">
+              <span class="carte-titre">Solo</span>
+              <span>Affronte l'ordinateur, en trois niveaux de difficulté.</span>
+            </button>
+            <button class="carte-mode" type="button" data-mode="duo">
+              <span class="carte-titre">2 joueurs</span>
+              <span>À deux sur le même écran, chacun son tour.</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 2 : le choix de l'avatar -->
+        <div id="etape-avatar" class="etape" hidden>
+          <h2 id="titre-avatar" class="titre-etape" tabindex="-1" data-titre></h2>
+
+          <fieldset id="niveau" class="niveau" hidden>
+            <legend>Difficulté de l'IA</legend>
+            <button class="puce" type="button" data-niveau="facile" aria-pressed="false">Facile</button>
+            <button class="puce" type="button" data-niveau="moyen" aria-pressed="true">Moyen</button>
+            <button class="puce" type="button" data-niveau="imbattable" aria-pressed="false">Imbattable</button>
+          </fieldset>
+
+          <ul id="avatars" class="avatars"></ul>
+          <button id="btn-retour" class="bouton bouton-blanc" type="button">Retour</button>
+        </div>
+
+        <!-- ÉTAPE 3 : la partie -->
+        <div id="etape-jeu" class="etape" hidden>
+          <p id="statut" class="statut" role="status" aria-live="polite" tabindex="-1" data-titre>
+            <img id="statut-img" alt="" width="44" height="44" hidden>
+            <span id="statut-texte"></span>
+          </p>
+
+          <div class="morpion-zone">
+            <div id="plateau" class="plateau" role="group" aria-label="Plateau du morpion"></div>
+
+            <aside class="jeu-cote">
+              <div class="tableaux">
+                <div class="tableau score-joueur" id="score-0">
+                  <img alt="" width="44" height="44">
+                  <p class="etiquette"></p>
+                  <p class="gros">0</p>
+                </div>
+                <div class="tableau">
+                  <p class="etiquette">Nuls</p>
+                  <p class="gros" id="pts-nul">0</p>
+                </div>
+                <div class="tableau score-joueur" id="score-1">
+                  <img alt="" width="44" height="44">
+                  <p class="etiquette"></p>
+                  <p class="gros">0</p>
+                </div>
+              </div>
+
+              <div class="boutons-jeu">
+                <button id="btn-rejouer" class="bouton bouton-jaune" type="button">Manche suivante</button>
+                <button id="btn-changer" class="bouton bouton-blanc" type="button">Changer de joueurs</button>
+              </div>
+
+              <p class="aide">Clique sur une case, ou navigue avec la touche Tab puis valide avec Entrée. Le premier à jouer change à chaque manche.</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <div class="conteneur">
+      <p>© 2026 BMZ GAMES. Fait à Avignon.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,346 @@
+/* ===== VARIABLES : change les couleurs ici ===== */
+:root {
+  --encre: #1b1450;
+  --encre-douce: #51497a;
+  --fond: #f5f3ff;
+  --rose: #ff3d81;
+  --jaune: #ffc83d;
+  --violet: #7c3aed;
+  --bleu: #2563eb;
+  --vert: #15935b;
+  --cyan: #0e9fb8;
+  --orange: #f26a1b;
+
+  /* Le style « autocollant » : contour épais + ombre pleine */
+  --bord: 3px solid var(--encre);
+  --ombre: 5px 5px 0 var(--encre);
+
+  --police-titre: "Fredoka", "Segoe UI", Arial, sans-serif;
+  --police-texte: "DM Sans", "Segoe UI", Arial, sans-serif;
+  --largeur: 1120px;
+}
+
+/* ===== BASE ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+body {
+  margin: 0;
+  font-family: var(--police-texte);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--encre);
+  background-color: var(--fond);
+}
+
+h1, h2, h3 { font-family: var(--police-titre); font-weight: 700; line-height: 1.15; margin: 0; }
+p { margin: 0 0 1rem; max-width: 62ch; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--rose); outline-offset: 3px; }
+
+.conteneur { width: 100%; max-width: var(--largeur); margin: 0 auto; padding: 0 1.5rem; }
+
+.lien-evitement {
+  position: absolute; left: 1rem; top: -4rem; z-index: 100;
+  background: var(--rose); color: #fff; padding: 0.6rem 1rem; border-radius: 12px;
+}
+.lien-evitement:focus { top: 1rem; }
+
+/* ===== EN-TÊTE ===== */
+.entete {
+  position: sticky; top: 0; z-index: 50;
+  background-color: var(--encre); color: #fff;
+  border-bottom: 5px solid var(--jaune);
+}
+.entete-interieur { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4.2rem; }
+
+.logo { font-family: var(--police-titre); font-weight: 700; font-size: 1.5rem; text-decoration: none; letter-spacing: 0.03em; }
+.logo-bloc {
+  display: inline-block; background: var(--jaune); color: var(--encre);
+  padding: 0 0.55rem; border-radius: 10px; margin-right: 0.15rem; transform: rotate(-4deg);
+}
+
+.menu { display: flex; flex-wrap: wrap; gap: 0.25rem 0.4rem; }
+.menu a {
+  display: block; text-decoration: none; font-weight: 700; font-size: 0.95rem;
+  color: #d6d0ff; padding: 0.3rem 0.85rem; border-radius: 999px;
+  transition: background-color 0.15s, color 0.15s;
+}
+.menu a:hover { background: var(--jaune); color: var(--encre); }
+
+/* ===== ACCUEIL ===== */
+.hero {
+  position: relative; overflow: hidden; color: #fff;
+  padding: clamp(3rem, 8vw, 6rem) 0 clamp(4.5rem, 9vw, 7rem);
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.13) 2px, transparent 2.5px) 0 0 / 26px 26px,
+    linear-gradient(135deg, #3a1d9e, var(--violet) 55%, var(--rose));
+}
+
+/* Autocollant décoratif */
+.hero::after {
+  content: "2 jeux dispo, 8 à venir !";
+  position: absolute; right: max(1.5rem, 6vw); bottom: 1.4rem; transform: rotate(-7deg);
+  background: var(--jaune); color: var(--encre); border: var(--bord); box-shadow: 4px 4px 0 var(--encre);
+  border-radius: 999px; padding: 0.4rem 1.2rem; font-family: var(--police-titre); font-weight: 700; font-size: 1.15rem;
+}
+
+.hero-grille { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 6vw, 4rem); align-items: center; }
+.hero h1 { font-size: clamp(2.2rem, 5.4vw, 3.9rem); letter-spacing: -0.01em; margin-bottom: 1.25rem; text-shadow: 3px 3px 0 rgba(27, 20, 80, 0.45); }
+.hero-texte { font-size: 1.2rem; color: #efeaff; margin-bottom: 2rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+/* Les visages des joueurs : ils « rebondissent » une fois au chargement */
+.mosaique { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; max-width: 330px; width: 100%; justify-self: end; }
+.mosaique img {
+  display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: 50%;
+  background: var(--encre); border: var(--bord); box-shadow: 3px 3px 0 var(--encre);
+  animation: pop 0.5s backwards;
+}
+.mosaique img:nth-child(3n + 1) { animation-delay: 0.05s; }
+.mosaique img:nth-child(3n + 2) { animation-delay: 0.2s; }
+.mosaique img:nth-child(3n + 3) { animation-delay: 0.35s; }
+
+@keyframes pop {
+  0% { transform: scale(0) rotate(-25deg); }
+  70% { transform: scale(1.12) rotate(4deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* ===== BOUTONS ===== */
+.bouton {
+  display: inline-block; font-family: var(--police-titre); font-weight: 600; font-size: 1.1rem; text-align: center; text-decoration: none;
+  padding: 0.7rem 1.5rem; border-radius: 14px; border: var(--bord); box-shadow: 4px 4px 0 var(--encre);
+  cursor: pointer; transition: transform 0.12s, box-shadow 0.12s;
+}
+.bouton:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--encre); }
+.bouton:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--encre); }
+
+.bouton-jaune { background: var(--jaune); color: var(--encre); }
+.bouton-blanc { background: #fff; color: var(--encre); }
+.bouton-violet { background: var(--violet); color: #fff; }
+.bouton-contour-clair { background: transparent; color: #fff; border-color: #fff; box-shadow: 4px 4px 0 rgba(27, 20, 80, 0.5); }
+
+/* ===== SECTIONS ===== */
+.section { --c-section: var(--bleu); padding: clamp(3rem, 7vw, 5rem) 0; }
+#reflexion { --c-section: var(--bleu); background: #e6efff; }
+#rapidite { --c-section: var(--rose); background: #ffe6ef; }
+#hasard { --c-section: var(--orange); background: #fff0dd; }
+#apropos { --c-section: var(--jaune); }
+
+.section h2 {
+  display: inline-block; background: var(--c-section); color: #fff;
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem); padding: 0.25rem 1.1rem;
+  border: var(--bord); border-radius: 14px; box-shadow: var(--ombre);
+  transform: rotate(-1.5deg); margin-bottom: 1.1rem;
+}
+#apropos h2 { color: var(--encre); }
+.intro { color: var(--encre-douce); font-size: 1.1rem; margin-bottom: 2rem; }
+
+/* ===== CARTES DE JEUX ===== */
+.jeux { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+
+.jeu {
+  display: flex; flex-direction: column; background: #fff;
+  border: var(--bord); border-radius: 18px; box-shadow: var(--ombre); padding: 0.9rem 0.9rem 1.2rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.jeu:nth-child(odd) { transform: rotate(-0.8deg); }
+.jeu:nth-child(even) { transform: rotate(0.8deg); }
+.jeu:hover { transform: translate(-3px, -5px) rotate(0); box-shadow: 8px 9px 0 var(--encre); }
+
+.apercu {
+  display: flex; align-items: center; justify-content: center; height: 8rem; margin-bottom: 1rem;
+  border: var(--bord); border-radius: 12px; color: #fff;
+  font-family: var(--police-titre); font-weight: 700; font-size: 2.5rem; letter-spacing: 0.04em;
+  text-shadow: 3px 3px 0 rgba(27, 20, 80, 0.35);
+}
+.apercu-tetes { gap: 0; }
+.apercu-tetes img {
+  width: 5.5rem; height: 5.5rem; border-radius: 50%; border: var(--bord); background: var(--encre);
+  margin: 0 -0.6rem; box-shadow: 3px 3px 0 var(--encre);
+}
+.apercu-tetes img:nth-child(2) { width: 6.5rem; height: 6.5rem; z-index: 1; }
+.t-bleu { background: var(--bleu); }
+.t-vert { background: var(--vert); }
+.t-ambre { background: var(--jaune); color: var(--encre); text-shadow: none; }
+.t-violet { background: var(--violet); }
+.t-corail { background: var(--rose); }
+.t-cyan { background: var(--cyan); }
+.t-orange { background: var(--orange); }
+
+.jeu h3 { font-size: 1.35rem; margin-bottom: 0.4rem; }
+.jeu > p { color: var(--encre-douce); font-size: 0.975rem; margin-bottom: 1.25rem; }
+.jeu-pied { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; padding-top: 1rem; border-top: 2px dashed #cfc8ee; }
+.infos { margin: 0; font-size: 0.875rem; color: var(--encre-douce); }
+.bientot {
+  font-size: 0.85rem; font-weight: 700; padding: 0.2rem 0.8rem; border-radius: 999px;
+  background: var(--jaune); color: var(--encre); border: 2px solid var(--encre); white-space: nowrap;
+}
+.jeu-pied .bouton { padding: 0.4rem 1.1rem; font-size: 1rem; }
+
+/* ===== À PROPOS ET PIED DE PAGE ===== */
+.section-sombre {
+  color: #fff;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.1) 2px, transparent 2.5px) 0 0 / 26px 26px,
+    var(--encre);
+}
+.apropos p { color: #d6d0ff; margin-bottom: 0; }
+
+.pied { padding: 1.75rem 0; font-size: 0.925rem; background: #120d3a; color: #b4aee0; border-top: 5px solid var(--rose); }
+.pied p { margin: 0; }
+
+/* ===== TABLETTE ET MOBILE ===== */
+@media (max-width: 900px) { .jeux { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 760px) {
+  .hero-grille { grid-template-columns: 1fr; }
+  .mosaique { justify-self: start; max-width: 240px; }
+}
+@media (max-width: 560px) {
+  .jeux { grid-template-columns: 1fr; }
+  .hero::after { display: none; }
+  .entete-interieur { flex-direction: column; align-items: flex-start; padding-top: 0.6rem; padding-bottom: 0.6rem; gap: 0.25rem; }
+}
+
+/* Respect des personnes sensibles aux animations */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ===== À LA UNE ===== */
+#une { --c-section: var(--vert); background: #e3f7ec; }
+.jeux-une { grid-template-columns: minmax(0, 360px); }
+
+/* ===== PAGE DU JEU ===== */
+.page-jeu { --c-section: var(--vert); background: #e3f7ec; }
+
+.titre-jeu {
+  display: inline-block; background: var(--vert); color: #fff;
+  font-size: clamp(1.8rem, 4vw, 2.6rem); padding: 0.25rem 1.2rem;
+  border: var(--bord); border-radius: 14px; box-shadow: var(--ombre);
+  transform: rotate(-1.5deg); margin-bottom: 1.1rem;
+}
+
+.jeu-zone { display: grid; grid-template-columns: minmax(0, 400px) 1fr; gap: 2rem; align-items: start; }
+
+#jeu {
+  display: block; width: 100%; max-width: 400px; height: auto; aspect-ratio: 400 / 620;
+  touch-action: none; cursor: pointer; background: #e3f7ec;
+  border: var(--bord); border-radius: 18px; box-shadow: var(--ombre);
+}
+
+.jeu-cote { display: grid; gap: 1.25rem; justify-items: start; max-width: 460px; }
+.tableaux { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+.tableau {
+  background: #fff; border: var(--bord); border-radius: 14px; box-shadow: 4px 4px 0 var(--encre);
+  padding: 0.5rem 1rem; min-width: 105px; text-align: center;
+}
+.tableau p { margin: 0; }
+.etiquette { font-size: 0.85rem; font-weight: 700; color: var(--encre-douce); }
+.gros { font-family: var(--police-titre); font-weight: 700; font-size: 1.9rem; line-height: 1.2; }
+#suivant { display: block; width: 56px; height: 56px; margin: 0 auto; }
+.boutons-jeu { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.boutons-jeu .bouton { padding: 0.5rem 1.1rem; font-size: 1rem; }
+.erreur { background: #fff; color: var(--encre); border: var(--bord); border-left: 10px solid var(--rose); border-radius: 12px; padding: 0.8rem 1rem; margin-bottom: 1.5rem; }
+
+.petit-titre { font-size: 1.3rem; margin: 0.5rem 0 -0.5rem; }
+.evolution { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.evolution img { display: block; width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--encre); background: var(--encre); }
+.aide { font-size: 0.925rem; color: var(--encre-douce); margin: 0; }
+
+@media (max-width: 860px) {
+  .jeu-zone { grid-template-columns: 1fr; justify-items: center; }
+}
+/* ===== PETITS PLUS ===== */
+.bouton[aria-pressed="true"].bouton-blanc { background: #e9e3ff; }
+.bientot { cursor: default; }
+@media (max-width: 560px) {
+  .menu a { padding: 0.3rem 0.6rem; font-size: 0.9rem; }
+  .tableau { min-width: 90px; }
+}
+
+/* ===== MORPION ===== */
+.page-morpion { --c-section: var(--bleu); background: #e6efff; }
+.page-morpion .titre-jeu { background: var(--bleu); }
+
+.titre-etape { font-size: clamp(1.4rem, 3vw, 1.8rem); margin-bottom: 1.25rem; }
+.titre-etape:focus, .statut:focus { outline: none; }
+
+/* Choix du mode */
+.choix-mode { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); gap: 1.5rem; }
+.carte-mode {
+  display: flex; flex-direction: column; gap: 0.5rem; text-align: left; font-family: var(--police-texte);
+  font-size: 1rem; line-height: 1.5; color: var(--encre-douce);
+  background: #fff; border: var(--bord); border-radius: 18px; box-shadow: var(--ombre); padding: 1.25rem; cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.carte-mode:hover { transform: translate(-2px, -3px); box-shadow: 7px 8px 0 var(--encre); }
+.carte-titre { font-family: var(--police-titre); font-weight: 700; font-size: 1.6rem; color: var(--encre); }
+
+/* Choix de l'avatar */
+.niveau { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; border: 0; padding: 0; margin: 0 0 1.5rem; }
+.niveau legend { float: left; font-family: var(--police-titre); font-weight: 600; margin-right: 0.75rem; padding: 0; }
+.puce {
+  font-family: var(--police-texte); font-size: 0.95rem; font-weight: 700; color: var(--encre);
+  background: #fff; border: 2px solid var(--encre); border-radius: 999px; padding: 0.3rem 1rem; cursor: pointer;
+}
+.puce:hover { background: #dfe9ff; }
+.puce[aria-pressed="true"] { background: var(--bleu); color: #fff; box-shadow: 2px 2px 0 var(--encre); }
+
+.avatars { display: grid; grid-template-columns: repeat(3, minmax(0, 140px)); gap: 1rem; margin-bottom: 1.75rem; }
+.avatar {
+  display: flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 100%;
+  font-family: var(--police-titre); font-weight: 600; font-size: 0.95rem; color: var(--encre);
+  background: #fff; border: var(--bord); border-radius: 16px; box-shadow: 4px 4px 0 var(--encre);
+  padding: 0.6rem 0.4rem; cursor: pointer; transition: transform 0.12s, box-shadow 0.12s;
+}
+.avatar img { display: block; width: 80px; height: 80px; border-radius: 50%; background: var(--encre); }
+.avatar:hover:not(:disabled) { transform: translate(-2px, -3px); box-shadow: 6px 7px 0 var(--encre); background: #fff7da; }
+.avatar:disabled { cursor: not-allowed; opacity: 0.45; box-shadow: none; }
+
+/* La partie */
+.statut {
+  display: flex; align-items: center; gap: 0.75rem; min-height: 52px; margin: 0 0 1.5rem;
+  font-family: var(--police-titre); font-weight: 700; font-size: clamp(1.3rem, 3vw, 1.7rem);
+}
+.statut img { width: 44px; height: 44px; border-radius: 50%; background: var(--encre); border: var(--bord); }
+.statut img[hidden] { display: none; }
+
+.morpion-zone { display: grid; grid-template-columns: minmax(0, 420px) 1fr; gap: 2rem; align-items: start; }
+
+.plateau { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; width: 100%; max-width: 420px; }
+.case {
+  aspect-ratio: 1; padding: 0.5rem; display: flex; align-items: center; justify-content: center;
+  background: #fff; border: var(--bord); border-radius: 16px; box-shadow: 4px 4px 0 var(--encre); cursor: pointer;
+  transition: background-color 0.12s, transform 0.12s;
+}
+.case:hover:not([aria-disabled="true"]) { background: #fff7da; transform: translate(-2px, -2px); }
+.case[aria-disabled="true"] { cursor: default; }
+.case img {
+  display: block; width: 100%; height: 100%; border-radius: 50%; background: var(--encre);
+  border: 4px solid var(--rose); animation: pop 0.35s;
+}
+.case.j1 img { border-color: var(--cyan); }
+.plateau.fini .case:not(.gagnante) { opacity: 0.55; }
+.case.gagnante { background: var(--jaune); }
+
+/* Tableau des scores : le joueur dont c'est le tour est entouré */
+.score-joueur img { display: block; width: 44px; height: 44px; margin: 0 auto 0.25rem; border-radius: 50%; background: var(--encre); border: 3px solid var(--rose); }
+#score-1 img { border-color: var(--cyan); }
+.score-joueur .etiquette { max-width: 9rem; }
+.tableau.actif { background: #fff7da; box-shadow: 0 0 0 4px var(--jaune), 4px 4px 0 4px var(--encre); }
+
+@media (max-width: 860px) {
+  .morpion-zone { grid-template-columns: 1fr; justify-items: center; }
+  .jeu-cote { justify-items: center; }
+}
+@media (max-width: 560px) {
+  .choix-mode { grid-template-columns: 1fr; }
+  .avatars { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+  .avatar img { width: 100%; height: auto; max-width: 80px; }
+  .avatar { font-size: 0.8rem; }
+}

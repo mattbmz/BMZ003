@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMZ GAMES – Mini jeux gratuits dans le navigateur</title>
+  <meta name="description" content="BMZ GAMES : des mini jeux gratuits dans ton navigateur, sans inscription.">
+  <meta name="theme-color" content="#1b1450">
+  <meta property="og:title" content="BMZ GAMES – Mini jeux gratuits">
+  <meta property="og:description" content="Des parties de quelques minutes, gratuites, sans inscription. Essaie Fusion Foot !">
+  <meta property="og:image" content="images/messi.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E">
+
+  <!-- Polices Google (nécessite une connexion internet) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="entete">
+    <div class="conteneur entete-interieur">
+      <a class="logo" href="index.html"><span class="logo-bloc">BMZ</span> GAMES</a>
+      <nav aria-label="Navigation principale">
+        <ul class="menu">
+          <li><a href="#une">À la une</a></li>
+          <li><a href="#reflexion">Réflexion</a></li>
+          <li><a href="#rapidite">Rapidité</a></li>
+          <li><a href="#hasard">Hasard</a></li>
+          <li><a href="#apropos">À propos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <!-- ACCUEIL -->
+    <section class="hero" id="accueil">
+      <div class="conteneur hero-grille">
+        <div>
+          <h1>Des mini jeux pour faire une vraie pause.</h1>
+          <p class="hero-texte">
+            Des parties de quelques minutes, gratuites, sans inscription.
+            Deux jeux sont prêts, huit autres arrivent bientôt.
+          </p>
+          <div class="actions">
+            <a class="bouton bouton-jaune" href="fusion.html">Jouer à Fusion Foot</a>
+            <a class="bouton bouton-contour-clair" href="#reflexion">Voir les jeux</a>
+          </div>
+        </div>
+
+        <!-- Les 9 joueurs de Fusion Foot -->
+        <div class="mosaique" aria-hidden="true">
+          <img src="images/olise.png" alt="">
+          <img src="images/kane.png" alt="">
+          <img src="images/messi.png" alt="">
+          <img src="images/rodri.png" alt="">
+          <img src="images/mbappe.png" alt="">
+          <img src="images/yamal.png" alt="">
+          <img src="images/haaland.png" alt="">
+          <img src="images/dembele.png" alt="">
+          <img src="images/kvaratskhelia.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <!--
+      POUR ACTIVER UN JEU PLUS TARD :
+      remplace <span class="bientot">Bientôt</span>
+      par <a class="bouton bouton-violet" href="morpion.html">Jouer</a>
+    -->
+
+    <!-- À LA UNE -->
+    <section class="section" id="une">
+      <div class="conteneur">
+        <h2>À la une</h2>
+        <p class="intro">Le tout premier jeu de BMZ GAMES. Le Morpion vient d'arriver dans « Réflexion ».</p>
+        <ul class="jeux jeux-une">
+          <li class="jeu">
+            <div class="apercu apercu-tetes t-vert" aria-hidden="true">
+              <img src="images/olise.png" alt="">
+              <img src="images/messi.png" alt="">
+              <img src="images/kane.png" alt="">
+            </div>
+            <h3>Fusion Foot</h3>
+            <p>Fais tomber des têtes de joueurs : deux têtes identiques fusionnent en une plus grosse. Atteins Messi !</p>
+            <div class="jeu-pied">
+              <p class="infos">1 joueur · 10 min</p>
+              <a class="bouton bouton-violet" href="fusion.html" aria-label="Jouer à Fusion Foot">Jouer</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RÉFLEXION -->
+    <section class="section" id="reflexion">
+      <div class="conteneur">
+        <h2>Réflexion</h2>
+        <p class="intro">Des jeux où l'on prend le temps d'anticiper.</p>
+        <ul class="jeux">
+          <li class="jeu">
+            <div class="apercu apercu-tetes t-bleu" aria-hidden="true">
+              <img src="images/haaland.png" alt="">
+              <img src="images/mbappe.png" alt="">
+            </div>
+            <h3>Morpion</h3>
+            <p>Aligne trois visages avant ton adversaire, contre l'ordinateur ou à deux.</p>
+            <div class="jeu-pied">
+              <p class="infos">1 à 2 joueurs · 2 min</p>
+              <a class="bouton bouton-violet" href="morpion.html" aria-label="Jouer au Morpion">Jouer</a>
+            </div>
+          </li>
+          <li class="jeu">
+            <div class="apercu t-vert" aria-hidden="true">? ?</div>
+            <h3>Memory</h3>
+            <p>Retrouve toutes les paires en retournant le moins de cartes possible.</p>
+            <div class="jeu-pied">
+              <p class="infos">1 joueur · 3 min</p>
+              <span class="bientot">Bientôt</span>
+            </div>
+          </li>
+          <li class="jeu">
+            <div class="apercu t-ambre" aria-hidden="true">2048</div>
+            <h3>2048</h3>
+            <p>Fusionne les tuiles identiques pour atteindre la tuile 2048.</p>
+            <div class="jeu-pied">
+              <p class="infos">1 joueur · 10 min</p>
+              <span class="bientot">Bientôt</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RAPIDITÉ -->
+    <section class="section" id="rapidite">
+      <div class="conteneur">
+        <h2>Rapidité</h2>
+        <p class="intro">Des jeux où chaque seconde compte.</p>
+        <ul class="jeux">
+          <li class="jeu">
+            <div class="apercu t-violet" aria-hidden="true">~~&gt;</div>
+            <h3>Snake</h3>
+            <p>Dirige le serpent, mange sans te mordre la queue et bats ton record.</p>
+            <div class="jeu-pied">
+              <p class="infos">1 joueur · 5 min</p>
+              <span class="bientot">Bientôt</span>
+            </div>
+          </li>
+          <li class="jeu">
+            <div class="apercu t-corail" aria-hidden="true">0,2 s</div>
+            <h3>Test de réflexes</h3>
+            <p>Clique dès que l'écran change de couleur et mesure ton temps de réaction.</p>
+            <div class="jeu-pied">
+              <p class="infos">1 joueur · 1 min</p>
+              <span class="bientot">Bientôt</span>
+            </div>
+          </li>
+          <li class="jeu">
+            <div class="apercu t-cyan" aria-hidden="true">Clic !</div>
+            <h3>Chasse aux taupes</h3>
+            <p>Clique sur les taupes avant qu'elles ne disparaissent, avant la fin du chrono.</p>
+            <div class="jeu-pied">
+              <p class="infos">1 joueur · 1 min</p>
+              <span class="bientot">Bientôt</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- HASARD -->
+    <section class="section" id="hasard">
+      <div class="conteneur">
+        <h2>Hasard</h2>
+        <p class="intro">Des jeux où la chance a son mot à dire.</p>
+        <ul class="jeux">
+          <li class="jeu">
+            <div class="apercu t-orange" aria-hidden="true">+ / −</div>
+            <h3>Plus ou moins</h3>
+            <p>Devine le nombre mystère en un minimum d'essais grâce aux indices.</p>
+            <div class="jeu-pied">
+              <p class="infos">1 joueur · 2 min</p>
+              <span class="bientot">Bientôt</span>
+            </div>
+          </li>
+          <li class="jeu">
+            <div class="apercu t-ambre" aria-hidden="true">P F C</div>
+            <h3>Pierre, feuille, ciseaux</h3>
+            <p>Le grand classique contre l'ordinateur, en manches gagnantes.</p>
+            <div class="jeu-pied">
+              <p class="infos">1 joueur · 2 min</p>
+              <span class="bientot">Bientôt</span>
+            </div>
+          </li>
+          <li class="jeu">
+            <div class="apercu t-corail" aria-hidden="true">⚅ ⚂</div>
+            <h3>Lancer de dés</h3>
+            <p>Lance un ou plusieurs dés et tente de battre le score de l'adversaire.</p>
+            <div class="jeu-pied">
+              <p class="infos">1 à 2 joueurs · 3 min</p>
+              <span class="bientot">Bientôt</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section class="section section-sombre" id="apropos">
+      <div class="conteneur apropos">
+        <h2>À propos</h2>
+        <p>
+          BMZ GAMES est un projet personnel : chaque jeu est écrit à la main en HTML,
+          CSS et JavaScript. De nouveaux jeux arrivent au fil de mon apprentissage
+          du développement web.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pied">
+    <div class="conteneur">
+      <p>© 2026 BMZ GAMES. Fait à Avignon.</p>
+    </div>
+  </footer>
+</body>
+</html>
