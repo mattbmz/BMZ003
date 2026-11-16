@@ -1,18 +1,5 @@
 "use strict";
 
-/* ===== LES AVATARS (les mêmes que dans Fusion Foot) ===== */
-const AVATARS = [
-  { id: "olise",         nom: "Olise",         img: "images/olise.png" },
-  { id: "kvaratskhelia", nom: "Kvaratskhelia", img: "images/kvaratskhelia.png" },
-  { id: "rodri",         nom: "Rodri",         img: "images/rodri.png" },
-  { id: "dembele",       nom: "Dembélé",       img: "images/dembele.png" },
-  { id: "kane",          nom: "Kane",          img: "images/kane.png" },
-  { id: "yamal",         nom: "Yamal",         img: "images/yamal.png" },
-  { id: "haaland",       nom: "Haaland",       img: "images/haaland.png" },
-  { id: "mbappe",        nom: "Mbappé",        img: "images/mbappe.png" },
-  { id: "messi",         nom: "Messi",         img: "images/messi.png" }
-];
-
 /* ===== LES RÈGLES ET L'IA (aucun lien avec la page : on peut les tester seules) ===== */
 // La grille a 9 cases (0 à 8). Chaque case vaut null (vide), 0 (joueur 1) ou 1 (joueur 2).
 const LIGNES = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];

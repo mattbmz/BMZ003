@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Run – BMZ Football Arcade Games</title>
+  <meta name="description" content="Football Run : saute les obstacles, traverse les stades et bats ton record de distance.">
+  <meta name="theme-color" content="#1b1450">
+  <meta property="og:title" content="Football Run – BMZ Football Arcade Games">
+  <meta property="og:description" content="Choisis ton joueur et lance-toi dans une course de foot sans fin !">
+  <meta property="og:image" content="images/messi.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="avatars.js" defer></script>
+  <script src="football-run-core.js" defer></script>
+  <script src="football-run.js" defer></script>
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="entete">
+    <div class="conteneur entete-interieur">
+      <a class="logo" href="index.html"><span class="logo-bloc">BMZ</span> Football Arcade Games</a>
+      <nav aria-label="Navigation principale">
+        <ul class="menu">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#reflexion">Réflexion</a></li>
+          <li><a href="index.html#rapidite">Rapidité</a></li>
+          <li><a href="index.html#hasard">Hasard</a></li>
+          <li><a href="index.html#apropos">À propos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu"><section class="section page-jeu page-run"><div class="conteneur">
+    <h1 class="titre-jeu">Football Run</h1>
+    <p class="intro">Un stade sans fin, des obstacles plein les crampons. Jusqu'où iras-tu ?</p>
+    <noscript><p class="erreur">Ce jeu a besoin de JavaScript pour fonctionner.</p></noscript>
+    <div class="run-topline"><div class="tableau"><p class="etiquette">Ton record</p><p class="gros" id="record">0 m</p></div><p class="aide" id="save-note">Ton record est sauvegardé sur ce navigateur.</p></div>
+    <div id="selection" class="etape">
+      <h2 class="titre-etape">Choisis ton avatar</h2>
+      <div class="run-choice"><div><ul id="run-avatars" class="avatars"></ul></div><aside class="run-instructions">
+        <div class="run-poster" aria-hidden="true"><span>À toi le terrain !</span></div>
+        <h3 class="petit-titre">Un seul geste : sauter.</h3>
+        <p>Espace, flèche ↑ ou un appui sur le terrain. Tu peux aussi utiliser le bouton « Sauter ».</p>
+        <p>Monte sur les plateformes volantes, enchaîne les sauts au-dessus du vide et évite les scies, les pointes, les haies et les ballons !</p>
+        <p class="aide">Le départ est rapide et le rythme augmente progressivement. Une pause ? Appuie sur P.</p>
+      </aside></div>
+      <div class="run-start"><p id="selection-label" role="status">Sélectionne ton joueur pour entrer sur le terrain.</p><button id="start" class="bouton bouton-jaune" disabled>Coup d'envoi !</button></div>
+    </div>
+    <div id="game" class="etape" hidden>
+      <div class="run-toolbar"><p class="statut"><img id="player-img" alt="" width="44" height="44"><span id="player-name"></span></p><div class="tableau"><p class="etiquette">Distance parcourue</p><p class="gros" id="distance">0 m</p></div><button id="pause" class="bouton bouton-blanc">Pause</button></div>
+      <div class="run-stage"><div id="record-toast" class="run-record-toast" role="status" aria-live="polite" hidden></div><canvas id="run-canvas" width="1100" height="500" tabindex="0" aria-label="Terrain de Football Run. Espace ou flèche haut pour sauter, P pour mettre en pause."></canvas>
+      <div id="overlay" class="run-overlay" hidden><div class="run-dialog"><p id="end-kicker" class="bientot">Fin de la partie</p><h2 id="end-title" tabindex="-1">Tu as perdu !</h2><p id="end-score"></p><div class="boutons-jeu"><button id="retry" class="bouton bouton-jaune">Recommencer</button><button id="resume" class="bouton bouton-jaune" hidden>Reprendre</button><button id="change" class="bouton bouton-blanc">Changer d'avatar</button><a class="bouton bouton-violet" href="index.html">Retour à l'accueil</a></div></div></div></div>
+      <div class="run-controls"><p class="aide">Espace / ↑ / toucher : sauter · P : pause<br>Monte sur les plateformes vertes : il n’y a pas de sol en dessous ! Évite les scies et les obstacles.</p><button id="jump" class="bouton bouton-jaune">Sauter ↑</button></div>
+    </div>
+  </div></section></main>
+  <footer class="pied">
+    <div class="conteneur">
+      <p>© 2026 BMZ Football Arcade Games. Fait à Avignon.</p>
+    </div>
+  </footer>
+</body>
+</html>

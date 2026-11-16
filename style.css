@@ -344,3 +344,58 @@ a { color: inherit; }
   .avatar img { width: 100%; height: auto; max-width: 80px; }
   .avatar { font-size: 0.8rem; }
 }
+
+/* Football Run utilise les composants communs aux autres jeux. */
+[hidden] { display: none !important; }
+.entete .logo { font-size: clamp(1.1rem, 2vw, 1.5rem); }
+.apercu-run { background: #25216b url('images/football-run-stadium.png') center / cover; }
+.nouveau { display: inline-block; font: 700 .7rem var(--police-texte); padding: .25rem .5rem; border: 2px solid var(--encre); border-radius: 8px; background: var(--jaune); vertical-align: middle; }
+.jeux-une { grid-template-columns: repeat(2, minmax(0, 360px)); }
+.page-run { --c-section: var(--violet); background: #eee7ff; }
+.page-run .titre-jeu { background: var(--violet); }
+.run-topline { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 2rem; }
+.run-choice { display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 2rem; align-items: start; }
+.page-run .avatars { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.page-run .avatar img { width: 70px; height: 70px; max-width: 100%; object-fit: contain; }
+.page-run .avatar { font-size: .85rem; overflow-wrap: anywhere; }
+.page-run .avatar[aria-pressed="true"] { background: var(--jaune); outline: 3px solid var(--violet); outline-offset: 3px; }
+.run-instructions { background: #fff; border: var(--bord); box-shadow: var(--ombre); border-radius: 18px; overflow: hidden; padding: 1rem; font-size: .95rem; }
+.run-instructions h3 { margin: 1.25rem 0 .75rem; }
+.run-poster { background: linear-gradient(0deg, #1b145099, transparent), url('images/football-run-stadium.png') center / cover; height: 145px; margin: -1rem -1rem 0; display: flex; align-items: end; padding: 1rem; color: white; font: 600 1.5rem var(--police-titre); }
+.run-start { display: flex; align-items: center; gap: 1rem; justify-content: space-between; }
+.run-start p { margin: 0; font-weight: 700; }
+.bouton:disabled { opacity: .5; cursor: not-allowed; }
+.run-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+.run-toolbar .statut { margin: 0; }
+.run-stage { position: relative; border: var(--bord); border-radius: 18px; box-shadow: var(--ombre); overflow: hidden; background: #18164c; }
+#run-canvas { width: 100%; height: auto; display: block; touch-action: none; cursor: pointer; }
+.run-overlay { position: absolute; inset: 0; display: grid; place-items: center; padding: 1rem; background: #1b145099; }
+.run-dialog { background: var(--fond); color: var(--encre); border: var(--bord); border-radius: 18px; box-shadow: var(--ombre); padding: 1.5rem; text-align: center; max-width: 620px; }
+.run-dialog h2 { margin: 1rem 0 .75rem; font-size: clamp(1.5rem, 4vw, 2.3rem); }
+.run-dialog p { margin-left: auto; margin-right: auto; }
+.run-dialog .boutons-jeu { justify-content: center; }
+.run-controls { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; }
+#jump { min-width: 180px; touch-action: manipulation; }
+@media(max-width: 900px) { .run-choice { grid-template-columns: 1fr; } .run-instructions { display: none; } }
+@media(max-width: 560px) {
+ .jeux-une { grid-template-columns: 1fr; }
+ .page-run .avatars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+ .run-start, .run-controls { flex-direction: column; align-items: stretch; }
+ .run-toolbar { flex-wrap: wrap; gap: .75rem; }
+ .run-toolbar .statut { font-size: 1.1rem; }
+ .run-toolbar .tableau { padding: .4rem .6rem; }
+ .run-toolbar .gros { font-size: 1.4rem; }
+ .run-toolbar .bouton { padding: .4rem .6rem; }
+ .run-dialog { padding: .75rem; }
+ .run-dialog h2 { margin: .5rem 0; }
+ .run-dialog p { margin-bottom: .5rem; }
+ .run-dialog .bouton { font-size: .8rem; padding: .4rem .65rem; }
+ .run-topline { margin-bottom: 1.5rem; }
+}
+.page-run .gros { white-space: nowrap; }
+.run-topline .tableau { flex-shrink: 0; }
+@media(max-width: 560px) { .run-overlay { position: relative; background: #d6c9ed; } }
+.run-record-toast { position: absolute; z-index: 2; top: 18px; left: 50%; transform: translateX(-50%); pointer-events: none; white-space: nowrap; padding: .55rem 1.2rem; border: var(--bord); border-radius: 999px; background: var(--jaune); color: var(--encre); box-shadow: var(--ombre); font: 700 clamp(.85rem, 2vw, 1.3rem) var(--police-titre); animation: record-arrive .45s cubic-bezier(.2,1.7,.5,1); }
+.run-overlay { z-index: 3; }
+@keyframes record-arrive { from { opacity: 0; transform: translate(-50%, -15px) scale(.7); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
+@media(prefers-reduced-motion: reduce) { .run-record-toast { animation: none; } }
